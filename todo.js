@@ -29,13 +29,14 @@ function deleteToDo(event) {
   });
   toDos = cleanToDo;
   saveToDos();
+  toDoForm.classList.remove("hiding");
 }
 
 function paintToDo(text) {
   const li = document.createElement("li");
   const delBtn = document.createElement("button");
-  delBtn.addEventListener("click", deleteToDo);
   delBtn.innerHTML = "x";
+  delBtn.addEventListener("click", deleteToDo);
   const span = document.createElement("span");
   const newId = toDos.length + 1;
   span.innerText = text;
@@ -49,6 +50,9 @@ function paintToDo(text) {
   };
   toDos.push(toDoObj);
   saveToDos();
+  if (newId === 4) {
+    toDoForm.classList.add("hiding");
+  }
 }
 
 function handleSubmit(event) {
